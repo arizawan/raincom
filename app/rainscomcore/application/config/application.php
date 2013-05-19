@@ -69,6 +69,7 @@ return array(
 
 	'profiler' => true,
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Character Encoding
@@ -194,6 +195,7 @@ return array(
 		'URI'        	=> 'Laravel\\URI',
 		'Validator'  	=> 'Laravel\\Validator',
 		'View'       	=> 'Laravel\\View',
+		'ExportExcel'   => 'Export\\ExportDataExcel',
 	),
 
 );

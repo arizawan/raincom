@@ -36,5 +36,8 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+	'qr' => array('auto' => true),
+	'excel_export' => array('auto' => true),
+	'swiftmailer' => array('auto'=>true),
 
 );

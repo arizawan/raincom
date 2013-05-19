@@ -40,6 +40,78 @@ Route::get('about', function()
 {
 	return View::make('home.about');
 });
+Route::get('generateqr', function(){
+
+    $qr = new QR();
+    $qr->url("www.laravel.com");
+    $qr->draw(200);
+
+});
+Route::get('formatcsv', function(){
+
+        $path = path('public')."export".DS;
+        if(!is_dir($path)) mkdir($path);
+        $filename = $path.'xlsfile_'.date('d_m_Y_h_m_s').'.xls';
+        $excel = new ExportExcel('file');
+        $excel->filename = $filename;
+        $excel->initialize();
+
+        $row = array(
+        		'Customers last Name',
+        		'first name',
+        		'address',
+        		'city',
+        		'state',
+        		'zip_code',
+        		'country',
+        		'email',
+        		'phone',
+        		'created',
+        		'updated',		
+        		);
+
+        $excel->addRow($row);
+
+        $row = array(
+        		'Ahmed',
+        		'Rizawan',
+        		'gazipur simultoli',
+        		'dhaka',
+        		'gazipur',
+        		'1703',
+        		'bangladesh',
+        		'ahm.rizawan@gmail.com',
+        		'+8801756170159',
+        		'12/0/12',
+        		'12/1/12',		
+        		);
+
+        $excel->addRow($row);
+
+        $excel->finalize();
+
+        return Response::download($filename);
+
+});
+Route::get('sendmail', function(){
+
+    // Get the Swift Mailer instance
+	$mailer = IoC::resolve('mailer');
+	$transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')->setUsername('ahm.rizawan@gmail.com')->setPassword('strongp455w0rd');
+	$message = Swift_Message::newInstance($transport);
+
+	// Construct the message
+	$message = Swift_Message::newInstance('Message From Website')
+		->attach(Swift_Attachment::fromPath(path('public').'favicon.ico'))
+	    ->setFrom(array('ratuladm@gmail.com'=>'Mr Example'))
+	    ->setTo(array('ahm.rizawan@gmail.com'=>'Mr Example'))
+	    ->addPart('My Plain Text Message','text/plain')
+	    ->setBody('<p>My HTML Message</p>','text/html');
+
+	// Send the email
+	$mailer->send($message);
+
+});
 
 /*
 |--------------------------------------------------------------------------

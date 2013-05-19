@@ -18,6 +18,7 @@ class Create_Users {
 			$table->timestamp('dob');
 			$table->string('newsstate',5);
 			$table->string('skey');
+			$table->string('permission',20);
 			$table->timestamps();
 	});
 
