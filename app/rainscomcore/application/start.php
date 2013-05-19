@@ -60,6 +60,7 @@ Laravel\Autoloader::$aliases = $aliases;
 
 Autoloader::map(array(
 	'Base_Controller' => path('app').'controllers/base.php',
+	'HTML2PDF' => path('bundle').'laravel-html2pdf/libs/html2pdf.class.php',
 ));
 
 /*
@@ -77,6 +78,7 @@ Autoloader::directories(array(
 	path('app').'models',
 	path('app').'libraries',
 ));
+
 
 /*
 |--------------------------------------------------------------------------

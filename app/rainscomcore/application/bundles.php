@@ -39,5 +39,5 @@ return array(
 	'qr' => array('auto' => true),
 	'excel_export' => array('auto' => true),
 	'swiftmailer' => array('auto'=>true),
-
+	'html2pdf' => array('auto' => true),
 );

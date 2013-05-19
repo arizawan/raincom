@@ -66,6 +66,14 @@ final class QR {
 	public function draw($size = 150) {
 
 		$url = self::API_URL . "choe=UTF-8&chs={$size}x{$size}&cht=qr&chl=" . urlencode($this->_data);
+		return $url;
+		//echo '<img src="'.$url.'">';
+	
+	}
+	public function drawimg($size = 150) {
+
+		$url = self::API_URL . "choe=UTF-8&chs={$size}x{$size}&cht=qr&chl=" . urlencode($this->_data);
+		//return $url;
 		echo '<img src="'.$url.'">';
 	
 	}

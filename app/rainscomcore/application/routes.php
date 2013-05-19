@@ -47,6 +47,25 @@ Route::get('generateqr', function(){
     $qr->draw(200);
 
 });
+Route::get('htmlpdfs', function(){
+
+	$qr = new QR();
+    $qr->url("www.laravel.com");
+    $imgfile	=	$qr->draw(50);
+    $content = "
+	<page>
+	    <h1>Test Header</h1>
+	    <br>
+	    Ceci est un <b>exemple d'utilisation</b>
+	    de <a href='http://html2pdf.fr/'>HTML2PDF</a>.<br>
+	    <img src=".$imgfile."/>
+	</page>";
+
+    $html2pdf = new HTML2PDF('P','A4','fr');
+    $html2pdf->WriteHTML($content);
+    return Response::make($html2pdf->Output(), 200, array('Content-type' => 'application/pdf'));
+
+});
 Route::get('formatcsv', function(){
 
         $path = path('public')."export".DS;
@@ -93,6 +112,7 @@ Route::get('formatcsv', function(){
         return Response::download($filename);
 
 });
+
 Route::get('sendmail', function(){
 
     // Get the Swift Mailer instance
@@ -112,6 +132,8 @@ Route::get('sendmail', function(){
 	$mailer->send($message);
 
 });
+
+
 
 /*
 |--------------------------------------------------------------------------
