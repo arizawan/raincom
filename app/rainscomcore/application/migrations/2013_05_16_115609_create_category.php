@@ -5,12 +5,12 @@ class Create_Category {
 	public function up()
     {
 		Schema::create('category', function($table) {
-			$table->string('id',70)->primary();
+			$table->increments('id');
 			$table->string('title',40);
-			$table->string('link');
-			$table->string('isspecial',1)->nullable();
-			$table->string('linkicon')->nullable();
-			$table->string('priority',10);
+			$table->string('link',250);
+			$table->string('isspecial',3)->nullable();
+			$table->string('linkicon',200)->nullable();
+			$table->string('priority',5);
 			$table->timestamps();
 	});
 
