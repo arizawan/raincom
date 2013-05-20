@@ -31,7 +31,33 @@
 |		});
 |
 */
+Route::post('/', function()
+{
+	print_r($_FILES);
+	$input = Input::all();
+    $user = Auth::user();
+    $image = Input::file('headshot');
+    $layer = PHPImageWorkshop\ImageWorkshop::initFromPath($image['tmp_name']);
 
+    $dirPath = path('storage').'/uploads/';
+    $filename = uniqid($image['size']) .'.jpg';
+    $createFolders = true;
+    $backgroundColor = null; // transparent, only for PNG (otherwise it will be white if set null)
+    $imageQuality = 85; // useless for GIF, usefull for PNG and JPEG (0 to 100%)
+    $layer->cropMaximumInPixel(0, 0, "MM");
+    $layer->resizeInPixel(700, 700, true, 0, 0, 'MM');
+    $layer->applyFilter(IMG_FILTER_CONTRAST, -2, null, null, null, true); // constrast
+	$layer->applyFilter(IMG_FILTER_BRIGHTNESS, 2, null, null, null, true); // brightness
+    $layer->save($dirPath, $filename, $createFolders, $backgroundColor, $imageQuality);
+
+
+    return Redirect::to('/');
+	//return View::make('home.index');
+});
+Route::get('/', function()
+{
+	return View::make('home.upload');
+});
 Route::get('/', function()
 {
 	/*

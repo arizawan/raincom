@@ -41,4 +41,5 @@ return array(
 	'swiftmailer' => array('auto'=>true),
 	'html2pdf' => array('auto' => true),
 	'sentry' => array('auto' => true),
+	'imageworkshop' => array('auto' => true),
 );
