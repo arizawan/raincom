@@ -11,6 +11,7 @@ class Create_Category {
 			$table->string('isspecial',3)->nullable();
 			$table->string('linkicon',200)->nullable();
 			$table->string('priority',5);
+			$table->string('linkslug',50);
 			$table->timestamps();
 	});
 
