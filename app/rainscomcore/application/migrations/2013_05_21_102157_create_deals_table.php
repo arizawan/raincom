@@ -6,7 +6,7 @@ class Create_Deals_Table {
     {
 		Schema::create('deals', function($table) {
 			$table->increments('id')->unsigned();
-			$table->string('dealid',10);
+			$table->string('dealid',200);
 			$table->string('title',100);
 			$table->string('innertitle',145);
 			$table->string('type',20);
