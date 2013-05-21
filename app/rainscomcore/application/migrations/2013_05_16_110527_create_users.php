@@ -38,9 +38,10 @@ class Create_Users {
 			$table->string('city',50);
 			$table->string('country',80);
 			$table->string('zip',10);
-			$table->timestamp('dob');
-			$table->timestamp('jod');
+			$table->timestamp('dob')->default('0000-00-00 00:00:00');
+			$table->timestamp('jod')->default('0000-00-00 00:00:00');
 			$table->string('newsstate',3);
+			$table->string('image',200)->nullable();
 		});
 
 		// Create groups table
@@ -82,15 +83,45 @@ class Create_Users {
 			$table->string('description')->nullable();
 		});
 
-		// Insert default values
+		// Insert default values rules
 		DB::connection(Config::get('sentry::sentry.db_instance'))
 			->table(Config::get('sentry::sentry.table.rules'))
 			->insert(array('rule' => 'superuser', 'description' => 'Access to Everything'));
 		DB::connection(Config::get('sentry::sentry.db_instance'))
 			->table(Config::get('sentry::sentry.table.rules'))
 			->insert(array('rule' => 'is_admin', 'description' => 'Administrative Privileges'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.rules'))
+			->insert(array('rule' => 'create', 'description' => 'Creating Things'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.rules'))
+			->insert(array('rule' => 'update', 'description' => 'Updating Things'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.rules'))
+			->insert(array('rule' => 'delete', 'description' => 'Deleting things'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.rules'))
+			->insert(array('rule' => 'is_partner', 'description' => 'Partner Access'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.rules'))
+			->insert(array('rule' => 'is_user', 'description' => 'User Access'));
 
-
+		// Insert default values groups
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.groups'))
+			->insert(array('name' => 'superuser', 'permissions' => '{"superuser":1,"is_admin":1,"create":1,"update":1,"delete":1,"is_partner":1,"is_user":1}'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.groups'))
+			->insert(array('name' => 'admin', 'permissions' => 		'{"is_admin":1,"modaretor":1,"create":1,"update":1,"delete":1,"is_partner":1}'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.groups'))
+			->insert(array('name' => 'partner', 'permissions' => 	'{"update":1,"is_partner":1}'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.groups'))
+			->insert(array('name' => 'user', 'permissions' => 		'{"update":1,"is_user":1}'));
+		DB::connection(Config::get('sentry::sentry.db_instance'))
+			->table(Config::get('sentry::sentry.table.groups'))
+			->insert(array('name' => 'smalladmin', 'permissions' => '{"is_admin":1,"create":1,"update":1}'));
 		
     }    
 

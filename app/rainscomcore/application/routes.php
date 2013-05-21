@@ -56,7 +56,10 @@ Route::post('/', function()
 });
 Route::get('/', function()
 {
-	return View::make('home.upload');
+	echo Str::slug('My First Blog Post!');
+	$diff = Date::diff('April 08, 2012', 'April 05, 2012');
+	dd($diff);
+	//return View::make('home.upload');
 });
 Route::get('logout', function()
 {

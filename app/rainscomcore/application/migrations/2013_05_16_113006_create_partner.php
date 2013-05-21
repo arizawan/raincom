@@ -17,7 +17,7 @@ class Create_Partner {
 			$table->string('isvisible',3);
 			$table->string('pincode',5);
 			$table->string('activestate');
-			$table->timestamp('statechangedon');
+			$table->timestamp('statechangedon')->default('0000-00-00 00:00:00');
 			$table->string('password',250);
 			$table->timestamps();
 	});

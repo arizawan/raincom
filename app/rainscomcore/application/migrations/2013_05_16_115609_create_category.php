@@ -7,7 +7,7 @@ class Create_Category {
 		Schema::create('category', function($table) {
 			$table->increments('id');
 			$table->string('title',40);
-			$table->string('link',250);
+			$table->string('parent',200);
 			$table->string('isspecial',3)->nullable();
 			$table->string('linkicon',200)->nullable();
 			$table->string('priority',5);

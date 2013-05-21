@@ -42,4 +42,9 @@ return array(
 	'html2pdf' => array('auto' => true),
 	'sentry' => array('auto' => true),
 	'imageworkshop' => array('auto' => true),
+	'date' => array('auto' => true),
+	'cartify' => array(
+        'handles' => 'cartify', // this is mainly for the examples
+        'auto'    => true
+    ),
 );
