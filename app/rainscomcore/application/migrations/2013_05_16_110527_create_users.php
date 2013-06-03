@@ -41,6 +41,7 @@ class Create_Users {
 			$table->timestamp('dob')->default('0000-00-00 00:00:00');
 			$table->timestamp('jod')->default('0000-00-00 00:00:00');
 			$table->string('newsstate',3);
+			$table->string('activationhash',250);
 			$table->string('image',200)->nullable();
 		});
 

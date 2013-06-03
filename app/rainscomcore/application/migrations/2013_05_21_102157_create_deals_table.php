@@ -10,6 +10,7 @@ class Create_Deals_Table {
 			$table->string('title',100);
 			$table->string('innertitle',145);
 			$table->string('type',20);
+			$table->string('preorder',3);
 			$table->string('category',200);
 			$table->timestamp('startdate')->default('0000-00-00 00:00:00');
 			$table->timestamp('enddate')->default('0000-00-00 00:00:00');
@@ -19,8 +20,10 @@ class Create_Deals_Table {
 			$table->text('specification');
 			$table->text('terms');
 			$table->text('couponinfo');
-			$table->text('paymenttypes');
 			$table->string('linkslug',120);
+			$table->string('genarallist',100);
+			$table->string('featuredlist',20);
+			$table->string('partnerlist',100);
 			$table->timestamps();
 	});
 

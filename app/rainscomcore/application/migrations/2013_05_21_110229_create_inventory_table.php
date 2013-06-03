@@ -11,6 +11,7 @@ class Create_Inventory_Table {
 			$table->string('originalprice',100);
 			$table->string('businessprice',100);
 			$table->string('discount',3);
+			$table->string('discounttype',20);
 			$table->string('quantity',100);
 			$table->string('quantitysold',100);
 			$table->string('soldoutlimit',3);

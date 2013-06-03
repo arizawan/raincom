@@ -60,7 +60,7 @@ Route::get('/', function()
 });
 Route::get('/', function()
 {
-	/*
+	
 	// Creating a User
 	try
 	{
@@ -102,9 +102,9 @@ Route::get('/', function()
 	{
 	    $errors = $e->getMessage();
 	}
-	*/
 	
-	/*
+	
+	
 	// Chk a users existence
 	if (Sentry::user_exists('ahm.rizawan@gmail.com'))
 	{
@@ -112,9 +112,9 @@ Route::get('/', function()
 	}else{
 		echo('Nope!');
 	}
-	*/
+	
 
-	/*
+	
 	// Create Groups
 	try
 	{
@@ -139,9 +139,9 @@ Route::get('/', function()
 	{
 	    $errors = $e->getMessage();
 	}
-	*/
+	
 
-	/*
+	
 	// Set Group Permissions
 	try
 	{
@@ -261,9 +261,9 @@ Route::get('/', function()
 	{
 	$errors = $e->getMessage();
 	}
-	*/
+	
 
-	/*
+	
 	// add user to group
 	$data = Cache::get('loggedinuser');
 
@@ -288,9 +288,9 @@ Route::get('/', function()
 	{
 	    $errors = $e->getMessage();
 	}
-	*/
+	
 
-	/*
+	
 	// Chk if user is in the group
 	try
 	{
@@ -310,9 +310,9 @@ Route::get('/', function()
 	{
 	    $errors = $e->getMessage(); // catch errors such as user does not exist.
 	}
-	*/
 	
-	/*
+	
+	
 	// Set user persmissions
 	
 	$permissions = array(
@@ -350,7 +350,7 @@ Route::get('/', function()
         // user does not have admin access
         echo ("noooooo!");
     }
-    */
+    
 
     // Login attempts
     Sentry::attempts('ahm.rizawan@gmail.com', '127.0.0.1')->add();

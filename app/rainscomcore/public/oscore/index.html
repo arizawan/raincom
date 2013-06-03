@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="author" content="Ahmed Rizawan">
+<title>OSCORE - DeepSea</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<!--[if IE 8]><link href="css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 9]><link href="css/ie9.css" rel="stylesheet" type="text/css" /><![endif]-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/forms/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.autosize.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.inputlimiter.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.inputmask.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.select2.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.listbox.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.validation.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.form.wizard.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.form.js"></script>
+
+<script type="text/javascript" src="js/plugins/forms/jquery.uniform.min.js"></script>
+
+<script type="text/javascript" src="js/files/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/files/login.js"></script>
+
+</head>
+
+<body class="no-background">
+
+	<!-- Fixed top -->
+	<div id="top">
+		<div class="fixed">
+			<a href="index.html" title="" class="logo"><img src="img/logo.png" alt="" /></a>
+			<ul class="top-menu">
+				<li class="dropdown">
+					<a class="login-top" data-toggle="dropdown"></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#registermodel" title="Register a new user" data-toggle="modal"><i class="icon-plus"></i>Register user</a></li>
+						<li><a href="#passresetmodel" data-toggle="modal"><i class="icon-refresh"></i>Recover password</a></li>
+						<li><a href="../" title=""><i class="icon-remove"></i>Go to the website</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /fixed top -->
+
+
+    <!-- Login block -->
+    <div class="login">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6><i class="icon-user"></i>Login page</h6>
+            </div>
+        </div>
+        <div class="well">
+            <form action="index.html" class="row-fluid validate">
+                <div class="control-group">
+                    <label class="control-label">UserID/Email</label>
+                    <div class="controls"><input class="span12 validate[required,custom[email]]" type="text" name="username" placeholder="username" /></div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label">Password:</label>
+                    <div class="controls"><input class="span12 validate[required]" type="password" name="password" placeholder="password" /></div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls"><label class="checkbox inline"><input type="checkbox" name="remember" class="styled" value="" checked="checked">Remember me</label></div>
+                </div>
+
+                <div class="login-btn"><input type="submit" value="Log me in" class="btn btn-danger btn-block" /></div>
+            </form>
+        </div>
+    </div>
+    <!-- /login block -->
+
+
+	<!-- Footer -->
+	<div id="footer">
+		<div class="copyrights">&copy;  OScom IT</div>
+		<ul class="footer-links">
+			<li><a href="#contactadminmodel" title="" data-toggle="modal"><i class="icon-cogs"></i>Contact admin</a></li>
+		</ul>
+	</div>
+	<!-- /footer -->
+	
+	<!-- New User Model Box -->
+	<div id="registermodel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Register User</h3>
+	  </div>
+	  <div class="modal-body">
+		<form class="form-horizontal validate">
+		  <div class="control-group">
+			<label class="control-label" for="inputName" name="username">Name</label>
+			<div class="controls">
+			  <input type="text" id="inputName" placeholder="Full Name" class="input-xlarge validate[required]">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="roleselect">Role</label>
+			<div class="controls">
+				<select id="roleselect" class="input-xlarge styled validate[required]" name="userrole" data-prompt-position="topLeft:0,10">
+					<option value="">Select...</option>
+					<option value="1">Super Admin</option>
+					<option value="2">Admin</option>
+					<option value="3">Modaretor</option>
+					<option value="4">Partner</option>
+					<option value="5">User</option>
+				</select>
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputEmail">Email</label>
+			<div class="controls">
+			  <input type="text" id="inputEmail" placeholder="Email" class="input-xlarge validate[required,custom[email]]" name="useremail">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputPassword">Password</label>
+			<div class="controls">
+			  <input type="password" id="inputPassword" placeholder="Password" class="input-xlarge validate[required]" name="userpassword">
+			</div>
+		  </div>
+	  </div>
+	  <div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<input type="submit" class="btn btn-primary" value="Register">
+	  </div>
+	  </form>
+	</div>
+	<!-- /New User Model Box -->
+	
+	<!-- Password Reset Model Box -->
+	<div id="passresetmodel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Password Reset Request</h3>
+	  </div>
+	  <div class="modal-body">
+		<form class="form-horizontal validate">
+		  <div class="control-group">
+			<label class="control-label" for="inputyourrole">Your Role</label>
+			<div class="controls">
+				<select class="input-xlarge validate[required] styled" id="inputyourrole" name="userrole" data-prompt-position="topLeft:0,10">
+					<option value="">Select...</option>
+					<option value="1">Super Admin</option>
+					<option value="1">Admin</option>
+					<option value="1">Modaretor</option>
+					<option value="1">Partner</option>
+					<option value="1">User</option>
+				</select>
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputEmailr">Email</label>
+			<div class="controls">
+			  <input type="text" id="inputEmailr" placeholder="Email" class="input-xlarge validate[required,custom[email]]" name="useremail">
+			</div>
+		  </div>
+	  </div>
+	  <div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<input type="submit" class="btn btn-primary" value="Request">
+	  </div>
+	  </form>
+	</div>
+	<!-- /Password Reset Model Box -->
+	
+	<!-- Contact Admin Model Box -->
+	<div id="contactadminmodel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Contact Admin of this App</h3>
+	  </div>
+	  <div class="modal-body">
+		<form class="form-horizontal validate">
+		  <div class="control-group">
+			<label class="control-label" for="inputNamea">Name</label>
+			<div class="controls">
+			  <input type="text" id="inputNamea" placeholder="Full Name" class="input-xlarge validate[required]" name="username">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputSubject">Subject</label>
+			<div class="controls">
+				<select id="inputSubject" class="input-xlarge validate[required] styled" name="subject" data-prompt-position="topLeft:0,10">
+					<option value="">Select...</option>
+					<option value="1">Technical</option>
+					<option value="1">User Account</option>
+					<option value="1">Others</option>
+				</select>
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputEmaila">Email</label>
+			<div class="controls">
+			  <input type="text" id="inputEmaila" placeholder="Email" class="input-xlarge validate[required,custom[email]]" name="email">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<label class="control-label" for="inputQuery">Query</label>
+			<div class="controls">
+				<textarea rows="5" cols="5" name="query" class="adminmlimited input-xlarge validate[required]" id="inputQuery"></textarea>
+				<span class="help-block" id="limit-text">Field limited to 300 characters.</span>
+			</div>
+		  </div>
+		
+	  </div>
+	  <div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<input type="submit" class="btn btn-primary" value="Submit">
+	  </div>
+	  </form>
+	</div>
+	<!-- /Contact Admin Model Box -->
+
+</body>
+</html>
