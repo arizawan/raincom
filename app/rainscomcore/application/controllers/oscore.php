@@ -4,19 +4,9 @@ class Oscore_Controller extends Base_Controller
 {
     public function action_index()
     {
-        if (Sentry::check())
-        {
-            // User is logged in
-            $loggedinem     =   Cache::get('coreuser');
-            //$userid         =   Users::where_email($loggedinem)->first();
-            var_dump(Sentry::user()->in_group('superuser'));
-            var_dump(Sentry::user());
-        }
-        else
-        {
-            // User is not logged in
-            return Redirect::to('/admin/login');
-        } 
+        $loggedinem     =   Cache::get('coreuser');
+        var_dump(Sentry::user()->in_group('superuser'));
+        var_dump(Sentry::user());
     }
     
     /*
@@ -93,22 +83,26 @@ class Oscore_Controller extends Base_Controller
         }
         return View::make('oscore.login')->with('usergroups',$usergroups)->with('notificationermsg', '')->with('notificationsucmsg', '');
     }
-     public function action_loginuser()
+    public function action_loginuser()
     {
         $usergroups =   Groups::all();
         $input = Input::get();
         Cache::forget('coreuser');  // Erase User catch
 
-        if (Sentry::check())
-        {
-            // User is logged in
-            return Redirect::to('/admin');
+        // Chk user is active or not
+        $userid     =   Users::where_email(Input::get('username'))->first();
+        if(!is_null($userid)){
+            if($userid->activated!='1'){
+                 return View::make('oscore.login')->with('notificationermsg',"User is not activeated yet! Contact Admin!")->with('notificationsucmsg', '')->with('usergroups',$usergroups);
+            }
         }
 
+        // If active the try to login
         try
         {
             if (Sentry::user_exists(Input::get('username')))
             {
+
                 // the user exists * md5 hash passwords
                 $user   = Sentry::login(Input::get('username'), md5(Input::get('password')), Input::get('remember'));
                 if ($user)
