@@ -1,0 +1,1 @@
+This is the G:\rainserver\wamp\www\raindev\rainscomcore\application\views/category/delete.blade.php view
